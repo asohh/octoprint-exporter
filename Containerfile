@@ -1,7 +1,7 @@
 FROM golang:alpine AS builder
 WORKDIR /local/go/src/
 RUN apk --no-cache add ca-certificates git
-COPY ./code/ .
+COPY . .
 RUN pwd && ls
 RUN go get -v && CGO_ENABLED=0 go build -o /bin/octoprint_exporter octoprint_exporter.go
 FROM scratch
